@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "ユーザー名とパスワードを入力して下さい"
+AuthUserFile /usr/local/apache2/conf/.htpasswd
+Require user test

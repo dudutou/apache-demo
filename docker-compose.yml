@@ -1,0 +1,24 @@
+version: "3"
+services:
+  apache-demo:
+    image: httpd
+    container_name: apache-demo
+    ports:
+      - "80:80"
+      - "81:81"
+      - "10080:10080"
+    volumes:
+      - ${PWD}/conf/my-httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ${PWD}/conf/basic_setting.conf:/usr/local/apache2/conf/extra/basic_setting.conf
+      - ${PWD}/conf/rewrite-vhosts.conf:/usr/local/apache2/conf/extra/rewrite-vhosts.conf
+      - ${PWD}/html/public-html/:/usr/local/apache2/htdocs/
+      - ${PWD}/html/home/doc/:/home/doc/
+      - ${PWD}/logs/:/usr/local/apache2/logs/
+
+  my-tomcat:
+    image: tomcat:9.0
+    container_name: my-tomcat
+    ports:
+      - "8888:8080"
+    volumes:
+      - ${PWD}/tomcat/webapps/:/usr/local/tomcat/webapps/
