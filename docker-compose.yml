@@ -15,10 +15,18 @@ services:
       - ${PWD}/html/home/doc/:/home/doc/
       - ${PWD}/logs/:/usr/local/apache2/logs/
 
-  my-tomcat:
+  my-tomcat-1:
     image: tomcat:9.0
-    container_name: my-tomcat
+    container_name: my-tomcat-1
     ports:
       - "8888:8080"
+    volumes:
+      - ${PWD}/tomcat/webapps/:/usr/local/tomcat/webapps/
+
+  my-tomcat-2:
+    image: tomcat:9.0
+    container_name: my-tomcat-2
+    ports:
+      - "8889:8080"
     volumes:
       - ${PWD}/tomcat/webapps/:/usr/local/tomcat/webapps/
